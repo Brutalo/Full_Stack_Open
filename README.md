@@ -1,17 +1,31 @@
 # Full_Stack_Open
 Full Stack open Course
-```
-journey
-	title Me studying for exams
-	section Exam is announced
-		I start studying: 1: Me
-		Make notes: 2: Me
-		Ask friend for help: 3: Me, Friend
-		We study togther: 5: Me, Friend
-	section Exam Day
-		Syllabys is incomplete: 2: Me
-		Give exam: 1: Me, Friend
-	section Result Declared
-		I passed the exam with destinction!: 5: Me
-		Friend barely gets passing marks: 2: Friend
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate server
+
+    Note right of browser: The browser executes the callback function that renders the notes
 ```
